@@ -35,7 +35,7 @@ func init() {
 	{
 		value := os.Getenv("DIRTITLE_SEP")
 		if value != "" {
-			titleSep=value
+			titleSep = value
 		}
 	}
 }
