@@ -51,7 +51,7 @@ func getConfDir() string {
 	if err == nil && stat.IsDir() {
 		return memDir
 	}
-	return filepath.Join(os.Getenv("HOME"), ".dirtitle")
+	return filepath.Join(userObj.HomeDir, ".dirtitle")
 }
 
 // returns (title, stopHere, err)
@@ -72,7 +72,7 @@ func readTitleFile(dpath string) (string, bool, error) {
 
 // returns (title, stopHere, err)
 func getShortTitle(dpath string) (string, bool, error) {
-	if dpath == os.Getenv("HOME") {
+	if dpath == userObj.HomeDir {
 		return "~", true, nil
 	}
 	title, stopHere, err := readTitleFile(dpath)
@@ -112,7 +112,7 @@ func getShortTitle(dpath string) (string, bool, error) {
 }
 
 func getLongTitle(dpath string) (string, error) {
-	if dpath == os.Getenv("HOME") {
+	if dpath == userObj.HomeDir {
 		return "~", nil
 	}
 	title, stopHere, err := readTitleFile(dpath)
