@@ -87,6 +87,9 @@ func getShortTitle(dpath string) (string, bool, error) {
 		return "", false, fmt.Errorf("bad directory path %#v", dpath)
 	}
 	dname := dpath[i+1 : len(dpath)]
+	if dname == "" {
+		return " ", true, nil
+	}
 	if dname[0] == '.' {
 		return " ", true, nil
 	}
