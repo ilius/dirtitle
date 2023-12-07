@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"os/user"
 	"path/filepath"
@@ -56,7 +55,7 @@ func getConfDir() string {
 
 // returns (title, stopHere, err)
 func readTitleFile(dpath string) (string, bool, error) {
-	data, err := ioutil.ReadFile(filepath.Join(getConfDir(), dpath+".title"))
+	data, err := os.ReadFile(filepath.Join(getConfDir(), dpath+".title"))
 	if err == nil {
 		title := string(bytes.TrimSpace(data))
 		if title == "" {
@@ -86,7 +85,7 @@ func getShortTitle(dpath string) (string, bool, error) {
 	if i < 0 {
 		return "", false, fmt.Errorf("bad directory path %#v", dpath)
 	}
-	dname := dpath[i+1 : len(dpath)]
+	dname := dpath[i+1:]
 	if dname == "" {
 		return " ", true, nil
 	}
