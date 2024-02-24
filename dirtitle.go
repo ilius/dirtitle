@@ -39,7 +39,7 @@ func init() {
 	}
 }
 
-func exitWithError(err interface{}) {
+func exitWithError(err any) {
 	os.Stderr.WriteString(fmt.Sprintf("dirtitle: %v\n", err))
 	os.Exit(1)
 }
