@@ -130,10 +130,7 @@ func getLongTitle(dpath string) (string, error) {
 	}
 
 	titleParts := []string{}
-	stopIndex := len(parts) - 3
-	if stopIndex < 1 {
-		stopIndex = 1
-	}
+	stopIndex := max(len(parts)-3, 1)
 	for i := len(parts); i > stopIndex; i -= 1 {
 		titlePart, isSet, err := getShortTitle(strings.Join(parts[:i], "/"))
 		if err != nil {
